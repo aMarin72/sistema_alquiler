@@ -1,0 +1,5 @@
+config\database.php, hemos modificado:
+'engine' => null, (Por defecto)
+'engine' => 'InnoDB',  (Permite que nuestras BBDD esten relacionadas.)
+
+
