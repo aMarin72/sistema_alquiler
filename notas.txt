@@ -2,4 +2,20 @@ config\database.php, hemos modificado:
 'engine' => null, (Por defecto)
 'engine' => 'InnoDB',  (Permite que nuestras BBDD esten relacionadas.)
 
+Laravel Volt es una API funcional dentro de Livewire 3 que permite crear componentes reactivos de un solo archivo, combinando la lógica PHP del componente y su plantilla Blade en un mismo archivo. A diferencia de la implementación tradicional de Livewire (basada en clases y archivos separados), Volt ofrece una sintaxis más concisa y directa, asemejándose a la forma en que los componentes funcionan en frameworks como Vue.js, facilitando el desarrollo de interfaces dinámicas en Laravel.
+
+Subir a GitHub el proyecto:
+git init       // para iniciar el proyecto
+git status  // para ver que no hay commits
+git add .    // para agregar todo el proyecto
+git commit -m  “Aquí el comentario” // el primer commit
+git branch -M main
+git remote add origin https://github.com/aMarin72/sistema_alquiler.git
+git push -u origin main
+
+Actualizar cambios del proyecto:
+git status
+git add .
+git commit -m  “Aquí el comentario”
+git push -u origin main
 

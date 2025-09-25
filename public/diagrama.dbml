@@ -1,0 +1,11 @@
+
+Table propiedades {
+    id int [primary key, increment]
+    tipo varchar
+    direccion varchar
+    precio int
+    descripcion varchar
+    estado varchar
+    created_at datetime
+    updated_at datetime
+}
