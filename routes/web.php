@@ -32,6 +32,6 @@ Route::middleware(['auth'])->group(function () {
         ->name('two-factor.show');
 });
 
-Route::get('prpiedades', [Propiedads::class, 'render'])->name('propiedades')->middleware(['auth']);
+Route::get('/propiedades', Propiedads::class)->name('propiedades')->middleware(['auth']);
 
 require __DIR__.'/auth.php';
