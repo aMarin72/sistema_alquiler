@@ -132,10 +132,6 @@
     </flux:modal>
 
     {{-- Modal eliminar propiedad --}}
-    <flux:modal.trigger name="deleteModal">
-        <flux:button variant="danger">Delete</flux:button>
-    </flux:modal.trigger>
-
     <flux:modal name="delete-propiedad" class="w-full" wire:model='deleteModal'>
         <div class="space-y-6">
             <div>

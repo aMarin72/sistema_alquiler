@@ -10,7 +10,7 @@ use Livewire\WithoutUrlPagination;
 
 class Propiedads extends Component
 {
-    use WithPagination;
+    use WithPagination, WithoutUrlPagination;
 
     protected $paginationTheme = 'tailwind';
 
@@ -128,6 +128,8 @@ class Propiedads extends Component
         $this->deletePropiedadSeleccionada->delete();
         $this->deleteModal = false;
         session()->flash('message', 'Propiedad eliminada correctamente.');
+
+        $this->resetPage();
     }
 
     public function render()
