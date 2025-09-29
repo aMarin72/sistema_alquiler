@@ -99,6 +99,66 @@
         @endif
     </flux:modal>
 
+    {{-- Modal editar propiedad --}}
+    <flux:modal name="edit-propiedad" class="w-full" wire:model='editModal'>
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">Editar propiedad</flux:heading>
+                <flux:text class="mt-2">Rellene todos los campos requeridos.</flux:text>
+            </div>
+
+            @if ($editPropiedadSeleccionada)
+                <form wire:submit.prevent="update" class="space-y-6">
+                    <flux:input wire:model="editTipo" :label="__('* Tipo')" type="text" />
+                    <flux:input wire:model="editDireccion" :label="__('* Dirección')" type="text" />
+                    <flux:input wire:model="editPrecio" :label="__('* Precio')" type="number" />
+                    <flux:textarea wire:model="editDescripcion" :label="__('* Descripción')"></flux:textarea>
+                    <flux:select wire:model="editEstado" :label="__('* Estado')">
+                        <option value="disponible">Disponible</option>
+                        <option value="alquilado">Alquilado</option>
+                        <option value="mantenimiento">Mantenimiento</option>
+                    </flux:select>
+
+                    <div class="flex justify-end space-x-2 rtl:space-x-reverse py-4">
+                        <flux:modal.close>
+                            <flux:button variant="filled">{{ __('Cancelar') }}</flux:button>
+                        </flux:modal.close>
+
+                        <flux:button variant="primary" type="submit">{{ __('Guardar') }}</flux:button>
+                    </div>
+                </form>
+            @endif
+        </div>
+    </flux:modal>
+
+    {{-- Modal eliminar propiedad --}}
+    <flux:modal.trigger name="deleteModal">
+        <flux:button variant="danger">Delete</flux:button>
+    </flux:modal.trigger>
+
+    <flux:modal name="delete-propiedad" class="w-full" wire:model='deleteModal'>
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">Eliminar propiedad?</flux:heading>
+
+                <flux:text class="mt-2">
+                    <p>¿Está seguro de que desea eliminar esta propiedad?.</p>
+                    <p>Esta acción no se puede deshacer.</p>
+                </flux:text>
+            </div>
+
+            <div class="flex gap-2">
+                <flux:spacer />
+
+                <flux:modal.close>
+                    <flux:button variant="ghost">Cancel</flux:button>
+                </flux:modal.close>
+
+                <flux:button type="submit" variant="danger" wire:click="delete">Eliminar proiedad</flux:button>
+            </div>
+        </div>
+    </flux:modal>
+
     <div class="overflow-x-auto">
         <table class="w-full">
             <thead>
@@ -123,10 +183,12 @@
                             <flux:button variant="primary" color="cyan" wire:click="show({{ $propiedad }})">
                                 <flux:icon name="eye" />
                             </flux:button>
-                            <flux:button variant="primary" color="amber">
+                            <flux:button variant="primary" color="amber"
+                                wire:click="showModalEdit({{ $propiedad }})">
                                 <flux:icon name="pencil" />
                             </flux:button>
-                            <flux:button variant="primary" color="red">
+                            <flux:button variant="primary" color="red"
+                                wire:click="showModaldelete({{ $propiedad }})">
                                 <flux:icon name="trash" />
                             </flux:button>
                         </td>
