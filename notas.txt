@@ -19,5 +19,8 @@ git add .
 git commit -m  “Aquí el comentario”
 git push -u origin main
 
+Ver todos los commits:
+git log
+
 Creamos un componente de Livewire:
 php artisan make:livewire Propiedads
