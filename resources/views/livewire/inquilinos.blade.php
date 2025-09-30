@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    {{-- Boton para mostrar el modal de crear inquilino --}}
+    {{-- Boton para mostrar el modal de crear inquilino, llama al metodo openModalCreate --}}
     <flux:button variant="primary" wire:click="openModalCreate">Crear Nuevo Inquilino</flux:button>
 
     {{-- Modal crear inquilino --}}
@@ -87,4 +87,95 @@
     <div class="mt-4">
         {{ $inquilinos->links() }}
     </div>
+
+    {{-- Modal mostrar inquilino --}}
+    <flux:modal name="show-inquilino" class="w-full" wire:model='showModal'>
+        @if ($inquilinoShow)
+            <div class="space-y-6">
+                <div>
+                    <flux:heading size="lg">Detalles del inquilino</flux:heading>
+                </div>
+
+                <div>
+                    <flux:heading size="lg">Nombres</flux:heading>
+                    <flux:text>{{ $inquilinoShow->nombres }}</flux:text>
+                </div>
+
+                <div>
+                    <flux:heading size="lg">Email</flux:heading>
+                    <flux:text>{{ $inquilinoShow->email }}</flux:text>
+                </div>
+
+                <div>
+                    <flux:heading size="lg">Teléfono</flux:heading>
+                    <flux:text>{{ $inquilinoShow->telefono }}</flux:text>
+                </div>
+
+                <div>
+                    <flux:heading size="lg">Fecha de Nacimiento</flux:heading>
+                    <flux:text>{{ $inquilinoShow->fecha_nacimiento }}</flux:text>
+                </div>
+
+                <div>
+                    <flux:heading size="lg">DNI</flux:heading>
+                    <flux:text>{{ $inquilinoShow->dni }}</flux:text>
+                </div>
+
+                <div class="flex justify-end space-x-2 rtl:space-x-reverse py-4">
+                    <flux:modal.close>
+                        <flux:button variant="filled">{{ __('Cerrar') }}</flux:button>
+                    </flux:modal.close>
+                </div>
+            </div>
+        @endif
+    </flux:modal>
+
+    {{-- Modal editar inquilino --}}
+    <flux:modal name="edit-inquilino" class="w-full" wire:model='editModal'>
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">Editar inquilino</flux:heading>
+                <flux:text class="mt-2">Rellene todos los campos requeridos.</flux:text>
+            </div>
+
+            <form wire:submit.prevent="update" class="space-y-6">
+                <flux:input wire:model="editNombres" :label="__('* Nombres')" type="text" />
+                <flux:input wire:model="editEmail" :label="__('* Email')" type="email" />
+                <flux:input wire:model="editTelefono" :label="__('* Teléfono')" type="text" />
+                <flux:input wire:model="editFechaNacimiento" :label="__('* Fecha de Nacimiento')" type="date" />
+                <flux:input wire:model="editDni" :label="__('* DNI')" type="text" />
+                <div class="flex justify-end space-x-2 rtl:space-x-reverse py-4">
+                    <flux:modal.close>
+                        <flux:button variant="filled">{{ __('Cancelar') }}</flux:button>
+                    </flux:modal.close>
+
+                    <flux:button variant="primary" type="submit">{{ __('Guardar') }}</flux:button>
+                </div>
+            </form>
+        </div>
+    </flux:modal>
+
+    {{-- Modal eliminar inquilino --}}
+    <flux:modal name="delete-inquilino" class="w-full" wire:model='deleteModal'>
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">Eliminar inquilino?</flux:heading>
+
+                <flux:text class="mt-2">
+                    <p>¿Está seguro de que desea eliminar este inquilino?.</p>
+                    <p>Esta acción no se puede deshacer.</p>
+                </flux:text>
+            </div>
+
+            <div class="flex gap-2">
+                <flux:spacer />
+
+                <flux:modal.close>
+                    <flux:button variant="ghost">Cancelar</flux:button>
+                </flux:modal.close>
+
+                <flux:button type="submit" variant="danger" wire:click="delete">Eliminar inquilino</flux:button>
+            </div>
+        </div>
+    </flux:modal>
 </div>
