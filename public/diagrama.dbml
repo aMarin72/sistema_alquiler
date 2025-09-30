@@ -9,3 +9,14 @@ Table propiedades {
     created_at datetime
     updated_at datetime
 }
+
+Table inquilinos {
+    id int [primary key, increment]
+    nombres varchar
+    email varchar
+    telefono varchar
+    fecha_nacimiento date
+    dni varchar
+    created_at datetime
+    updated_at datetime
+}

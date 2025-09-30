@@ -134,7 +134,7 @@ class Propiedads extends Component
 
     public function render()
     {
-        $propiedades = Propiedad::latest()->paginate(10);
+        $propiedades = Propiedad::paginate(10);
         return view('livewire.propiedads', compact('propiedades'));
     }
 }

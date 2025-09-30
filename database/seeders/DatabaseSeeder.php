@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Inquilino;
 use App\Models\Propiedad;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Propiedad::factory(50)->create(); // php artisan db:seed
+        Inquilino::factory(50)->create();
     }
 }
