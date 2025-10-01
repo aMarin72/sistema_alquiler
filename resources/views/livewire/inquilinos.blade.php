@@ -59,7 +59,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($inquilinos as $inquilino)
+                @forelse ($inquilinos as $inquilino)
                     <tr>
                         <td class="border px-4 py-2">{{ $inquilino->id }}</td>
                         <td class="border px-4 py-2">{{ $inquilino->nombres }}</td>
@@ -80,7 +80,11 @@
                             </flux:button>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="7" class="border px-4 py-2 text-center">No hay inquilinos</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
