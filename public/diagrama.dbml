@@ -1,6 +1,6 @@
 
 Table propiedades {
-    id int [primary key, increment]
+    id int [primary key, increment] //llave primaria
     tipo varchar
     direccion varchar
     precio int
@@ -11,12 +11,24 @@ Table propiedades {
 }
 
 Table inquilinos {
-    id int [primary key, increment]
+    id int [primary key, increment] //llave primaria
     nombres varchar
     email varchar
     telefono varchar
     fecha_nacimiento date
     dni varchar
+    created_at datetime
+    updated_at datetime
+}
+
+Table contratos {
+    id int [primary key, increment]
+    propiedad_id int [ref: > propiedades.id] //llave foranea
+    inquilino_id int [ref: > inquilinos.id] //llave foranea
+    fecha_inicio date
+    fecha_fin date
+    monto int
+    estado varchar
     created_at datetime
     updated_at datetime
 }

@@ -19,4 +19,10 @@ class Propiedad extends Model
         'descripcion',
         'estado',
     ];
+
+    // Relaciones, una propiedad puede tener muchos contratos
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class);
+    }
 }

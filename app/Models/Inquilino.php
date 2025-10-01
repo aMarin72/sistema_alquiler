@@ -19,4 +19,10 @@ class Inquilino extends Model
         'fecha_nacimiento',
         'dni',
     ];
+
+    // Relaciones, un inquilino puede tener muchos contratos
+    public function contratos()
+    {
+        return $this->hasMany(Contrato::class);
+    }
 }
