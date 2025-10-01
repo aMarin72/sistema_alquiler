@@ -24,3 +24,5 @@ git log
 
 Creamos un componente de Livewire:
 php artisan make:livewire Propiedads
+
+El proyecto esta sin terminar
